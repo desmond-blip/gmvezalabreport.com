@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GM VEZA HOSPITAL</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #1e3a8a;
+            color: white;
+            padding: 20px;
+        }
+
+        h1 {
+            margin: 10px 0;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .btn {
+            padding: 18px 60px;
+            font-size: 20px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            background-color: #1e3a8a;
+            color: white;
+            transition: 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #163172;
+        }
+
+        /* Logos */
+        .logos-container {
+            margin-top: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .logos-container img {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+        }
+
+        @media screen and (max-width: 600px) {
+            .logos-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .logos-container img {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>GM VEZA HOSPITAL</h1>
+    </div>
+
+    <div class="container">
+        <!-- ONLY ONE BUTTON -->
+        <a href="labrequest.html">
+            <button class="btn">LAB REQUEST</button>
+        </a>
+    </div>
+
+    <!-- Logos -->
+    <div class="logos-container">
+        <img src="veza.png" alt="VEZA Logo">
+        <img src="health.png" alt="Health Logo">
+        <img src="sha.webp" alt="SHA Logo">
+    </div>
+
+</body>
+</html>

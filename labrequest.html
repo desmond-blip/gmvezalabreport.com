@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GM VEZA HOSPITAL LAB FORM</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #e9edf3;
+    margin: 0;
+    padding: 15px;
+}
+
+.page {
+    width: 210mm;
+    height: 297mm;
+    margin: auto;
+    background: white;
+    padding: 12px;
+    box-sizing: border-box;
+}
+
+/* HEADER */
+.header {
+    text-align: center;
+    border-bottom: 2px solid #0b3d91;
+    padding-bottom: 4px;
+}
+
+.header img {
+    width: 80px;
+    height: 80px;
+    display: block;
+    margin: auto;
+}
+
+.header h1 {
+    margin: 2px 0;
+    font-size: 17px;
+    color: #0b3d91;
+}
+
+.header p {
+    margin: 1px;
+    font-size: 10px;
+}
+
+h2 {
+    text-align: center;
+    margin: 4px 0;
+    font-size: 14px;
+    text-decoration: underline;
+}
+
+.warning {
+    text-align: center;
+    color: red;
+    font-size: 10px;
+    margin: 3px 0;
+}
+
+/* TABLE */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+    table-layout: fixed;
+}
+
+th, td {
+    border: 1px solid #000;
+    padding: 3px;
+}
+
+th {
+    background: #0b3d91;
+    color: white;
+}
+
+/* INPUT LINES */
+.line {
+    border-bottom: 1px solid #000;
+    height: 16px;
+}
+
+.bigline {
+    border-bottom: 1px solid #000;
+    height: 20px;
+}
+
+/* INVESTIGATION SPACE PERFECT FIT */
+.bigspace {
+    height: 220px;
+    border: 1px solid #000;
+}
+
+/* SPECIMEN */
+.specimen-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 10px;
+}
+
+/* BUTTON */
+.no-print {
+    text-align: center;
+    margin-top: 8px;
+}
+
+button {
+    padding: 10px 20px;
+    background: #0b3d91;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    body {
+        background: white;
+    }
+    .page {
+        box-shadow: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page" id="formContent">
+
+<div class="header">
+    <img src="veza.png" alt="LOGO" crossorigin="anonymous">
+    <h1>GM VEZA HOSPITAL</h1>
+    <p>Address: 612-40200 | Tel: 0715513893</p>
+    <p>Email: everlinenyaboke5@gmail.com | PIN: P052389331J</p>
+</div>
+
+<h2>LABORATORY REQUEST FORM</h2>
+
+<div class="warning">
+⚠ INCOMPLETE FORM WILL NOT BE PROCESSED
+</div>
+
+<table>
+
+<tr><th colspan="4">PERSONAL INFORMATION</th></tr>
+
+<tr>
+<td>Name</td>
+<td colspan="3"><div class="bigline"></div></td>
+</tr>
+
+<tr>
+<td>Age</td>
+<td><div class="line"></div></td>
+<td>Sex</td>
+<td><div class="line"></div></td>
+</tr>
+
+<tr>
+<td>IP/OP No</td>
+<td><div class="line"></div></td>
+<td>Date</td>
+<td><div class="line"></div></td>
+</tr>
+
+<tr>
+<td>Residence</td>
+<td colspan="3"><div class="bigline"></div></td>
+</tr>
+
+<tr>
+<td>Lab No</td>
+<td><div class="line"></div></td>
+<td>Report To</td>
+<td><div class="line"></div></td>
+</tr>
+
+<tr>
+<td>Specimen</td>
+<td><div class="line"></div></td>
+<td>Collection Date</td>
+<td><div class="line"></div></td>
+</tr>
+
+<tr>
+<td>Time</td>
+<td><div class="line"></div></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr><th colspan="4">SPECIMEN DESCRIPTION</th></tr>
+
+<tr>
+<td colspan="4">
+<div class="specimen-row">
+<label><input type="checkbox"> Histology</label>
+<label><input type="checkbox"> Cytology</label>
+<label><input type="checkbox"> Serology</label>
+<label><input type="checkbox"> Haematology</label>
+<label><input type="checkbox"> Bacteriology</label>
+<label><input type="checkbox"> Parasitology</label>
+<label><input type="checkbox"> Biochemistry</label>
+</div>
+</td>
+</tr>
+
+<tr>
+<td colspan="4">
+<b>OTHER (SPECIFY):</b>
+<div class="bigline"></div>
+</td>
+</tr>
+
+<tr>
+<th colspan="4" style="text-align:left; padding-left:10px;">
+INVESTIGATION REQUESTED
+</th>
+</tr>
+
+<tr>
+<td colspan="4" class="bigspace"></td>
+</tr>
+
+<tr><th colspan="4">TEST DONE BY / SIGN / DATE</th></tr>
+
+<tr>
+<td>Done By</td>
+<td><div class="line"></div></td>
+<td>Signature</td>
+<td><div class="line"></div></td>
+</tr>
+
+<tr>
+<td>Date</td>
+<td><div class="line"></div></td>
+<td></td>
+<td></td>
+</tr>
+
+</table>
+
+<div class="no-print">
+<button onclick="savePDF()">💾 SAVE FORM</button>
+</div>
+
+</div>
+
+<script>
+function savePDF() {
+    const element = document.getElementById("formContent");
+
+    html2canvas(element, {
+        scale: 3,
+        useCORS: true,
+        ignoreElements: (el) => el.classList.contains("no-print")
+    }).then(canvas => {
+
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF("p", "mm", "a4");
+
+        const pageWidth = 210;
+        const pageHeight = 297;
+
+        const imgData = canvas.toDataURL("image/png");
+
+        let imgWidth = pageWidth - 10;
+        let imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+        if (imgHeight > pageHeight - 10) {
+            imgHeight = pageHeight - 10;
+            imgWidth = (canvas.width * imgHeight) / canvas.height;
+        }
+
+        const x = (pageWidth - imgWidth) / 2;
+        const y = 5;
+
+        pdf.addImage(imgData, "PNG", x, y, imgWidth, imgHeight);
+
+        pdf.save("GM_VEZA_HOSPITAL_LAB_FORM_A4.pdf");
+    });
+}
+</script>
+
+</body>
+</html>
